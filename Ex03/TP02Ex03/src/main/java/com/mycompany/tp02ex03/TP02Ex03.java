@@ -5,7 +5,6 @@
 
 package com.mycompany.tp02ex03;
 import java.util.Scanner;
-import java.text.DecimalFormat;
 /**
  *
  * @author gabri
@@ -29,7 +28,7 @@ public class TP02Ex03 {
         Scanner scan = new Scanner(System.in);
         
         int qtd, num, sum = 0, min = 0, max = 0;
-        double avg = 0, posPer = 0, negPer = 0;
+        double avg = 0, avgSum, avgQtd, posPer = 0, negPer = 0;
         System.out.printf("Quantos números serão digitados: ");
         qtd = scan.nextInt();
         
@@ -41,7 +40,10 @@ public class TP02Ex03 {
             num = scan.nextInt();
             
             sum += num;
-            avg = sum/qtd;
+
+            avgSum = sum;
+            avgQtd = qtd;
+            avg = avgSum/avgQtd;
             
             nums[i] = num;
         }
@@ -66,12 +68,8 @@ public class TP02Ex03 {
         posPer = (posPer/qtd) * 100;
         negPer = (negPer/qtd) * 100;
         
-        //define formato decimal
-        DecimalFormat dec = new DecimalFormat();
-        dec.setMaximumFractionDigits(2);
-        
         System.out.printf("\nO maior valor é: %d\nO menor valor é: %d", max, min);
-        System.out.printf("\n\nA soma dos valores é: %d\nA média dos valores é de: %s", sum, dec.format(avg));
+        System.out.printf("\n\nA soma dos valores é: %d\nA média dos valores é de: %.2f", sum, avg);
         System.out.printf("\n\nA porcentagem de número positivos é: %.2f%%\nA porcentagem de números negativos é: %.2f%%", posPer, negPer);
     }
 }
